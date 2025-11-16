@@ -130,6 +130,83 @@ export class LockScreenUtils {
       remaining: remainingMinutes === 'never' ? 'never expires' : `${remainingMinutes} minutes`
     });
   }
+
+  /**
+   * Show help with all available methods
+   * Usage: LockScreenUtils.help()
+   */
+  static help(): void {
+    console.log(`
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  LockScreen Utilities Help
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Available Methods:
+────────────────────────────────────────────────────────────
+
+  Password & Hash Management
+  ───────────────────────────────────────────────────────────
+  LockScreenUtils.generateHash('password')
+    → Generate SHA1 hash for a password
+    
+  LockScreenUtils.getCommonHashes()
+    → Show SHA1 hashes for common passwords
+
+  Authentication Management
+  ───────────────────────────────────────────────────────────
+  LockScreenUtils.getStoredAuth()
+    → View current authentication data in localStorage
+    
+  LockScreenUtils.setAuth('hash')
+    → Manually set authentication (for testing)
+    
+  LockScreenUtils.clearAuth()
+    → Clear authentication data (force re-login)
+
+  Session Testing
+  ───────────────────────────────────────────────────────────
+  LockScreenUtils.testExpiry(10000)
+    → Make session appear 10 seconds old (test expiry)
+    
+  LockScreenUtils.checkSessionValidity(3600000)
+    → Check if session is valid with given expiry (1 hour)
+
+  Help
+  ───────────────────────────────────────────────────────────
+  LockScreenUtils.help()
+    → Show this help message
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Quick Examples:
+────────────────────────────────────────────────────────────
+
+  // Generate hash for your password
+  LockScreenUtils.generateHash('mySecretPassword')
+  
+  // Check current session
+  LockScreenUtils.getStoredAuth()
+  
+  // Clear session to test lock screen
+  LockScreenUtils.clearAuth()
+  
+  // Test session expiry
+  LockScreenUtils.testExpiry(3600000) // 1 hour old
+  
+  // Get common password hashes
+  LockScreenUtils.getCommonHashes()
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Default Configuration:
+────────────────────────────────────────────────────────────
+  Storage Key: 'angular_lock_auth'
+  Default Password: 'password123'
+  Default Hash: 'cbfdac6008f9cab4083784cbd1874f76618d2a97'
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    `);
+  }
 }
 
 // Make it available globally for browser console usage
