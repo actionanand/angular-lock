@@ -1,0 +1,40 @@
+name: GitHub Pages - Angular 20.3.0
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.11.1'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build for gh-page
+        run: PASSWORD_HASH=${{ secrets.PASSWORD_HASH }} npm run build:gh
+
+      - name: Copy error files to redirect to home
+        run: npm run copy-error-page
+
+      - name: Deploy
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          base_href: /angular-lock/ # make sure this corresponds to https://<your_username>.github.io/<base_href>/
+          deploy_branch: gh-pages
+          publish_dir: dist/angular-lock/browser
+          enable_jekyll: true
