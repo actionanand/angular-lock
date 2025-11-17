@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { LockScreenComponent } from './lock-screen/lock-screen.component';
 import { LockScreenService } from './lock-screen/lock-screen.service';
 import { LoggerService } from './logger/logger.service';
+import { Navbar } from './components/navbar/navbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LockScreenComponent],
+  imports: [RouterOutlet, LockScreenComponent, Navbar],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

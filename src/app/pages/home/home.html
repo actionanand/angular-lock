@@ -1,1 +1,53 @@
-<p>home works!</p>
+<div class="home-container">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="gradient-text">Angular Lock Screen</span>
+      </h1>
+      <p class="hero-subtitle">
+        A modern, secure, and customizable lock screen implementation for Angular applications
+      </p>
+      <div class="hero-stats">
+        @for (stat of stats; track stat.label) {
+          <div class="stat-card">
+            <div class="stat-value">{{ stat.value }}</div>
+            <div class="stat-label">{{ stat.label }}</div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2 class="section-title">Key Features</h2>
+    <div class="features-grid">
+      @for (feature of features; track feature.title) {
+        <div class="feature-card">
+          <div class="feature-icon">{{ feature.icon }}</div>
+          <h3 class="feature-title">{{ feature.title }}</h3>
+          <p class="feature-description">{{ feature.description }}</p>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to Get Started?</h2>
+      <p class="cta-text">
+        Explore the documentation and implement secure lock screen functionality in your Angular app today.
+      </p>
+      <div class="cta-buttons">
+        <a href="https://github.com/actionanand/angular-lock" target="_blank" class="btn btn-primary">
+          View on GitHub
+        </a>
+        <a routerLink="/about" class="btn btn-secondary">
+          Learn More
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
