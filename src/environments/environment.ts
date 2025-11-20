@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  passwordHash: undefined as string | undefined, // Set this during build or use window.__env
+  passwordHash: 'PASSWORD_HASH_PLACEHOLDER', // To be replaced during build with actual hash
 };
